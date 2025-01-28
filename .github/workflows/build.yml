@@ -12,13 +12,13 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
-      - name: List directory contents
-        run: ls -al "${{ env.DIR }}"
       - name: cv
         uses: dante-ev/latex-action@latest
         with:
           root_file: "${{ env.FILE }}"
           working_directory: "${{ env.DIR }}"
+      - name: List directory contents
+        run: ls -al "${{ env.DIR }}"
       - name: move
         run: mkdir -p github_artifacts && mv "${{ env.DIR }}"/"${{ env.FILE }}".pdf ./github_artifacts/
       - name: Upload pdf as artifact
