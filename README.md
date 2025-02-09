@@ -22,11 +22,11 @@ You can get a direct link to the generated PDF which you can use on your website
 
 NOTE: For the direct link to work, after editing your copy of `cv.tex` and pushing changes to your repo, under Settings -> Pages set your Github Pages source to the `build` directory
 
-![](https://i.imgur.com/lwATw1o.png)
+![GitHub Pages](https://i.imgur.com/lwATw1o.png)
 
 ## This template on Overleaf
 
-<a href="https://www.overleaf.com/latex/templates/autocv/scfvqfpxncwb"><img alt="Overleaf" src="https://img.shields.io/badge/Overleaf-47A141.svg?style=for-the-badge&logo=Overleaf&logoColor=white"/></a>
+[![Overleaf](https://img.shields.io/badge/Overleaf-47A141.svg?style=for-the-badge&logo=Overleaf&logoColor=white)](https://www.overleaf.com/latex/templates/autocv/scfvqfpxncwb)
 
 Also, if you have a premium subscription to Overleaf, you can use Overleaf's GitHub integration to push changes to your GitHub repo directly from Overleaf.
 
@@ -42,7 +42,7 @@ Also, if you have a premium subscription to Overleaf, you can use Overleaf's Git
 ## More options
 
 - If you'd like a custom URL like `cv.name.com` check out [this page](https://github.com/jitinnair1/autoCV/wiki/Custom-URL-for-your-CV)
-- If you want to add use different versions of the CV for different langauges, you can modify the script [as seen here](https://github.com/MateusRosario/myAutoCV/blob/main/.github/workflows/build.yml) (from Mateus Rosario's [fork](https://github.com/MateusRosario/myAutoCV) of this repo)  
+- If you want to add use different versions of the CV for different languages, you can modify the script [as seen here](https://github.com/MateusRosario/myAutoCV/blob/main/.github/workflows/build.yml) (from Mateus Rosario's [fork](https://github.com/MateusRosario/myAutoCV) of this repo)  
 
 ## Issues
 
