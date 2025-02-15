@@ -49,15 +49,15 @@ jobs:
           force_orphan: true
           enable_jekyll: true
 
-  copy-index-to-build:
+  sync-assets-to-build:
     needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Copy to branches action
+      - name: Copy index.html, CNAME và folder image
         uses: planetoftheweb/copy-to-branches@v1.3
         env:
           key: main
-          files: index.html CNAME
+          files: index.html CNAME image
