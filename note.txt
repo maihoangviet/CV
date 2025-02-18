@@ -1,0 +1,4 @@
+18/02/2025
+% CÓ THỂ CẦN PHẢI BỎ Ý VMware ESXi.
+% CÓ THỂ CHỈNH LẠI Ý Created and updated system documentation THÀNH TASK LIÊN QUAN TỚI TECH CỦA DEVOPS NHIỀU HƠN.
+% CÓ THỂ BỔ SUNG CÁC Ý ĐỂ THÊM SỐ LIỆU VÀO NHIỀU HƠN
