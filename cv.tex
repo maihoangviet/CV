@@ -1,221 +1,229 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%-------------------------
+% Resume in Latex
+% Author : Aras Gungore
+% License : MIT
+%------------------------
 
-%----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
-%----------------------------------------------------------------------------------------
+\documentclass[letterpaper,11pt]{article}
 
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
-%----------------------------------------------------------------------------------------
-\usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
-
-%tabularx environment
-\usepackage{tabularx}
-
-%for lists within experience section
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
 \usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
+\usepackage{hyphenat}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
 
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+%---------- FONT OPTIONS ----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
 
-%Setup hyperref package, and colours for links
-\usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
-%for social icons
-\usepackage{fontawesome5}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-%debug page outer frames
-%\usepackage{showframe}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
-%----------------------------------------------------------------------------------------
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeSubSubheading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeEducationHeading}[6]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+      \textit{\small#5} & \textit{\small #6} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeOrganizationHeading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{\small #2} \\
+      \textit{\small#3}
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
-
 %----------------------------------------------------------------------------------------
-%	TITLE
+%	HEADING
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
-\begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Mai Hoang Viet} \\[7.5pt]
-\href{tel:+840971600213}{\raisebox{-0.05\height}\faMobile \ +84 971600213} \ $|$ \ 
-\href{mailto:maihoangviet.tech@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ maihoangviet.tech@gmail.com} \ $|$ \ 
-\href{https://www.linkedin.com/in/maihoangviet}{\raisebox{-0.05\height}\faLinkedin\ maihoangviet} \ $|$ \ 
-\href{https://github.com/maihoangviet}{\raisebox{-0.05\height}\faGithub\ maihoangviet} \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	SUMMARY
-%----------------------------------------------------------------------------------------
-
-% \section{Summary}
-% I'm truly excited to embark on my career as a DevOps Engineer, where I intend to utilize my technical expertise and fervor for automation to engineer outstanding software solutions that play a pivotal role in achieving business success. With just under a year of practical experience, I'm wholeheartedly committed to a path of perpetual growth and learning. My ambition is to eagerly tackle challenging projects, proactively sharpen my skills, and steadily work towards attaining a Solution Architect role within the next five years.
+\begin{center}
+    \textbf{\Huge \scshape Mai Hoang Viet} \\ \vspace{3pt}
+    \small
+    \href{tel:+840971600213}{\raisebox{-0.05\height}\faMobile \ +84 971600213} \ $|$ \ 
+    \href{mailto:maihoangviet.tech@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ maihoangviet.tech@gmail.com} \ $|$ \ 
+    \href{https://www.linkedin.com/in/maihoangviet}{\raisebox{-0.05\height}\faLinkedin\ maihoangviet} \ $|$ \ 
+    \href{https://github.com/maihoangviet}{\raisebox{-0.05\height}\faGithub\ maihoangviet} \\
+\end{center}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
+
 \section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-    \textbf{Containers} & Docker \\
-    \textbf{Container Orchestration} & Kubernetes \\
-    \textbf{CI/CD Tools} & GitLab CI/CD, Jenkins \\
-    \textbf{GitOps} & ArgoCD, Helm \\
-    \textbf{Secret Management} & Vault \\
-    \textbf{Databases} & MongoDB, MySQL, PostgreSQL \\
-    \textbf{Infrastructure Monitoring} & Grafana, Prometheus\\
-    \textbf{Service Mesh} & Istio \\
-    \textbf{Cloud Providers} & AWS, Digital Ocean, Contabo \\
-    \textbf{Virtualization} & VMware, VirtualBox, Vagrant \\
-    \textbf{Configuration Management} & Ansible \\
-    \textbf{Infrastructure Provisioning} & Terraform \\
-    \textbf{Networking, Security and Protocols} & DNS, HTTP, HTTPS, SSL/TLS, SSH \\
-    \textbf{Programming Language} &  Bash Scripting, Python \\
-    \textbf{Others} & Microservices, CloudFlare\\
-\end{tabularx}
+  \vspace{3pt}
+  \resumeSubHeadingListStart
+    \small{\item{
+        \textbf{Containers:} Docker \\ \vspace{3pt}
+        \textbf{Container Orchestration:} Kubernetes \\ \vspace{3pt}
+        \textbf{CI/CD Tools:} GitLab CI/CD, Jenkins \\ \vspace{3pt}
+        \textbf{GitOps:} ArgoCD, Helm \\ \vspace{3pt}
+        \textbf{Secret Management:} Vault \\ \vspace{3pt}
+        \textbf{Databases:} MongoDB, MySQL, PostgreSQL \\ \vspace{3pt}
+        \textbf{Infrastructure Monitoring:} Grafana, Prometheus \\ \vspace{3pt}
+        \textbf{Service Mesh:} Istio \\ \vspace{3pt}
+        \textbf{Cloud Providers:} AWS, Digital Ocean, Contabo \\ \vspace{3pt}
+        \textbf{Virtualization:} VMware, VirtualBox, Vagrant \\ \vspace{3pt}
+        \textbf{Configuration Management:} Ansible \\ \vspace{3pt}
+        \textbf{Infrastructure Provisioning:} Terraform \\ \vspace{3pt}
+        \textbf{Networking, Security and Protocols:} DNS, HTTP, HTTPS, SSL/TLS, SSH \\ \vspace{3pt}
+        \textbf{Programming Languages:} Bash Scripting, Python \\ \vspace{3pt}
+        % \textbf{Others:} Microservices, CloudFlare \\ \vspace{3pt}
+    }}
+  \resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
 %	EXPERIENCE
 %----------------------------------------------------------------------------------------
 
-%Experience
-\section{Work Experience}
+\section{Experience}
+\vspace{3pt}
+\resumeSubHeadingListStart
+% DEEP TECH TECHNOLOGY JOIN STOCK COMPANY
+\resumeSubheading
+    {DEEP TECH TECHNOLOGY JOIN STOCK COMPANY}{}
+    {DevOps Engineer}{Jun 2023 -- Present}
+    \resumeItemListStart
+        \resumeItem{\textbf{Administered 6+ Kubernetes clusters} across \textbf{30+ on-premise servers} in \textbf{multiple environments}, using \textbf{GitOps} for consistent and efficient \textbf{microservices deployments}.}
+        \resumeItem{\textbf{Designed and optimized GitLab CI/CD pipelines} for \textbf{50+ applications} in \textbf{varied environments} using \textbf{GitFlow}, improving deployment speed and minimizing errors.}
+        \resumeItem{\textbf{Developed and managed jobs} using \textbf{Bash scripts} to \textbf{automate} system tasks, such as \textbf{backups, restores, migrations, data cleansing, user account creations, and server configurations}.}
+        \resumeItem{\textbf{Leveraged Grafana, Prometheus and Loki} to gain deep insights into \textbf{system logs and metrics}, supporting timely troubleshooting and infrastructure issue resolution.}
+        \resumeItem{\textbf{Configured and maintained the company’s IT infrastructure}, including \textbf{VMware ESXi servers} and \textbf{Ruijie network devices} to ensure optimal performance, security, and stability.}
+        \resumeItem{\textbf{Collaborated closely} with \textbf{cross-functional teams} to \textbf{design, build, and support systems} that align with business requirements.}
+        \resumeItem{\textbf{Created and updated system documentation} to equip the team with essential knowledge for understanding the system and enhancing problem-solving efficiency.}
+    \resumeItemListEnd
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{DEEP TECH TECHNOLOGY JOIN STOCK COMPANY} & \hfill Jun 2023 - Present \\[3.75pt]
-\textit{\textbf{DevOps Engineer}} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-    \item \textbf{Administered 6+ Kubernetes clusters} across \textbf{30+ on-premise servers} in \textbf{multiple environments}, using \textbf{GitOps} for consistent and efficient \textbf{microservices deployments}.
-    \item \textbf{Designed and optimized GitLab CI/CD pipelines} for \textbf{50+ applications} in \textbf{varied environments} using \textbf{GitFlow}, improving deployment speed and minimizing errors.
-    \item \textbf{Developed and managed jobs} using \textbf{Bash scripts} to \textbf{automate} system tasks, such as \textbf{backups, restores, migrations, data cleansing, user account creations, and server configurations}.
-    \item \textbf{Leveraged Grafana, Prometheus and Loki} to gain deep insights into \textbf{system logs and metrics}, supporting timely troubleshooting and infrastructure issue resolution.
-    \item \textbf{Configured and maintained the company’s IT infrastructure}, including \textbf{VMware ESXi servers} and \textbf{Ruijie network devices} to ensure optimal performance, security, and stability.
-    \item \textbf{Collaborated closely} with \textbf{cross-functional teams} to \textbf{design, build, and support systems} that align with business requirements.
-    \item \textbf{Created and updated system documentation} to equip the team with essential knowledge for understanding the system and enhancing problem-solving efficiency.
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
-
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{ANTOREE EDUDEV LLC} & \hfill Mar 2023 - May 2023 \\[3.75pt]
-\textit{\textbf{DevOps Engineer Internship}} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-        \item \textbf{Managed scalable and resilient AWS infrastructure} (\textbf{ECS, ECR, EC2, ELB, S3, Route 53}) for applications across \textbf{Staging and Production environments}.
-        \item \textbf{Automated CI/CD pipelines} with \textbf{Jenkins} for faster deployments and fewer errors.
-        \item \textbf{Reduced operational costs} by \textbf{30\% (\$1000+ monthly)} through \textbf{resource optimization, rightsizing, and data retention policies}, while maintaining system uptime and performance.
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
+% ANTOREE EDUDEV LLC
+\resumeSubheading
+    {ANTOREE EDUDEV LLC}{}
+    {DevOps Engineer Internship}{Mar 2023 -- May 2023}
+    \resumeItemListStart
+        \resumeItem{\textbf{Managed scalable and resilient AWS infrastructure} (\textbf{ECS, ECR, EC2, ELB, S3, Route 53}) for applications across \textbf{Staging and Production environments}.}
+        \resumeItem{\textbf{Automated CI/CD pipelines} with \textbf{Jenkins} for faster deployments and fewer errors.}
+        \resumeItem{\textbf{Reduced operational costs} by \textbf{30\% (\$1000+ monthly)} through \textbf{resource optimization, rightsizing, and data retention policies}, while maintaining system uptime and performance.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
+
 \section{Education}
-{\bf Ton Duc Thang University - TDTU} \hfill {Sep 2019 - Sep 2023} \\
-{\bf Bachelor of Computer Networks and Data Communication} \\
-GPA: 7.96/10.0
-
+  \vspace{3pt}
+  \resumeSubHeadingListStart
+    \resumeEducationHeading
+      {Ton Duc Thang University - TDTU}{}
+      {Bachelor of Computer Networks and Data Communication}{Sep 2019 \textbf{--} Sep 2023}
+      {\textbf{GPA: 7.96/10.0}}{}
+  \resumeSubHeadingListEnd
+  
 %----------------------------------------------------------------------------------------
-%	CERTIFICATION
+%CERTIFICATES
 %----------------------------------------------------------------------------------------
 
-\section{Certifications}
-% \begin{tabularx}{\linewidth}{@{}l X@{}}	
-% \multicolumn{2}{@{}X@{}}{
-% \begin{minipage}[t]{\linewidth}
-%     \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-%         \item \href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url} {AWS Certified Solutions Architect - Associate}
-%     \end{itemize}
-%     \end{minipage}
-% }  \\
-% \end{tabularx}
-\href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url} {AWS Certified Solutions Architect - Associate}
+\section{Certificates}\
+  \resumeSubHeadingListStart    
+    \resumeOrganizationHeading
+      {\href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url}{AWS Certified Solutions Architect - Associate}}{Apr 2022}{}{}
+  \resumeSubHeadingListEnd
 
-\vfill
 
 \end{document}
