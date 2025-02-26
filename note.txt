@@ -12,8 +12,11 @@
 % SUY NGHĨ KỸ CÁC TASK CÓ NÊN GHI NGẮN GỌN HƠN (THÊM TASK MỚI), KHÔNG CẦN GHI CÁC Ý NHƯ: for consistent and efficient, enhancing deployment speed and reducing errors, to ensure optimal performance, security, and stability, supporting timely troubleshooting and infrastructure issue resolution, ... CÓ HỢP LÝ HAY KHÔNG
 
 24/02/2025
-% CÓ THỂ PHẢI THÊM SỐ LIỆU VÀO CÁC Ý
+% CÓ THỂ PHẢI THÊM SỐ LIỆU VÀO CÁC Ý ***
 % UPDATE THÊM CÁC Ý 1, 2 ĐỂ RÕ HƠN
 % PHẢI THÊM CÁC TASK DEVOPS DO CÒN DƯ TỚI 5 HÀNG (THAM KHẢO CV CỦA CÁC ANH DEVOPS TRÊN LINKEDIN)
 % CŨNG CÓ THỂ MỖI Ý NGẮN LẠI NHƯNG NHIỀU Ý (GIỐNG CÁC ANH DEVOPS TRÊN LINKEDIN)
 % Ý 4, 5 CẢM THẤY HƠI DÀI QUÁ - MỘT Ý NÊN 2 HÀNG LÀ ĐẸP
+
+26/02/2025
+% TƯƠNG TỰ NGÀY 24/02/2025
