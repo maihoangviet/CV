@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DIR: .
+      DIR: src
       FILE: cv
       PDF_NAME: "CV - Mai Hoang Viet - DevOps Engineer.pdf"
     steps:
