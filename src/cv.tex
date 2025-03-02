@@ -21,7 +21,6 @@
 \usepackage{fontawesome5}
 \input{glyphtounicode}
 
-
 %---------- FONT OPTIONS ----------
 % sans-serif
 % \usepackage[sfdefault]{FiraSans}
@@ -34,7 +33,12 @@
 % \usepackage{charter}
 
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\hypersetup{
+    colorlinks,
+    breaklinks,
+    urlcolor=linkcolour,
+    linkcolor=linkcolour
+}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -58,7 +62,9 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}
+{0em}{}
+[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -72,48 +78,43 @@
   }
 }
 
-
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-7pt}
 }
-
 
 \newcommand{\resumeSubSubheading}[2]{
-    \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textit{\small#1} & \textit{\small #2} \\
+  \end{tabular*}\vspace{-7pt}
 }
-
 
 \newcommand{\resumeEducationHeading}[6]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-      \textit{\small#5} & \textit{\small #6} \\
-    \end{tabular*}\vspace{-5pt}
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+    \textit{\small#5} & \textit{\small #6} \\
+  \end{tabular*}\vspace{-5pt}
 }
-
 
 \newcommand{\resumeProjectHeading}[2]{
-    \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-7pt}
 }
-
 
 \newcommand{\resumeOrganizationHeading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textit{\small #2} \\
-      \textit{\small#3}
-    \end{tabular*}\vspace{-7pt}
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{\small #2} \\
+    \textit{\small#3}
+  \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
@@ -126,8 +127,7 @@
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -149,8 +149,8 @@
 %----------------------------------------------------------------------------------------
 
 \section{Skills}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
+\vspace{3pt}
+\resumeSubHeadingListStart
     \small{\item{
         \textbf{Containers:} Docker \\ \vspace{3pt}
         \textbf{Container Orchestration:} Kubernetes \\ \vspace{3pt}
@@ -168,7 +168,7 @@
         \textbf{Programming Languages:} Bash Scripting, Python \\ \vspace{3pt}
         % \textbf{Others:} Microservices, CloudFlare \\ \vspace{3pt}
     }}
-  \resumeSubHeadingListEnd
+\resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
 %	EXPERIENCE
@@ -177,31 +177,30 @@
 \section{Experience}
 \vspace{3pt}
 \resumeSubHeadingListStart
-% CIRCLE K VIETNAM
+
 % DEEP TECH TECHNOLOGY JOIN STOCK COMPANY
 \resumeSubheading
-    {DEEP TECH TECHNOLOGY JOIN STOCK COMPANY}{}
+    {DEEP TECH TECHNOLOGY JOIN STOCK COMPANY}{}%
     {DevOps Engineer}{Jun 2023 -- Dec 2024}
-    \resumeItemListStart
-        \resumeItem{\textbf{Administered 6+ Kubernetes clusters} across \textbf{30+ on-premise servers} in \textbf{multiple environments}, using \textbf{GitOps} principal for consistent and efficient \textbf{microservices deployments}.}
-        \resumeItem{\textbf{Designed and optimized GitLab CI/CD pipelines} for \textbf{50+ applications} in \textbf{varied environments} using \textbf{Gitflow workflow and branch policies}, enhancing deployment speed and reducing errors.}
-        \resumeItem{\textbf{Developed and managed Bash script automation} for \textbf{recurring system tasks} (\textbf{data backup}, \textbf{data retention}, \textbf{server configuration} ...), reducing manual intervention by \textbf{35\%} and cutting execution time by \textbf{30\%}.}
-        \resumeItem{\textbf{Successfully migrated services}, originally deployed directly on servers, to a \textbf{Kubernetes-based microservices architecture}: containerized applications using \textbf{Docker}, packaged into \textbf{Helm charts}, and implemented automated deployments via \textbf{GitLab CI/CD} and \textbf{ArgoCD}.}
-        \resumeItem{\textbf{Implemented proactive alert mechanisms} using \textbf{Grafana} and \textbf{Prometheus} to detect \textbf{system anomalies} and \textbf{send notifications} via \textbf{multiple channels}. \textbf{Integrated Loki} to filter \textbf{sensitive log data} and identify \textbf{log errors}, triggering \textbf{timely alerts}.}
-        \resumeItem{\textbf{Communicated and collaborated effectively} with \textbf{cross-functional teams}, including \textbf{development and testing teams} to \textbf{design, build, and support systems} that align with \textbf{business requirements}.}
-        % \resumeItem{\textbf{Created and updated system documentation} to equip the team with essential knowledge for understanding the system and enhancing problem-solving efficiency.}
-% 5 HÀNG NỮA EDUCATION MỚI QUA TRANG 2
-    \resumeItemListEnd
+\resumeItemListStart
+    \resumeItem{\textbf{Administered 6+ Kubernetes clusters} across \textbf{30+ on-premise servers} in \textbf{multiple environments}, using \textbf{GitOps} principal for consistent and efficient \textbf{microservices deployments}.}
+    \resumeItem{\textbf{Designed and optimized GitLab CI/CD pipelines} for \textbf{50+ applications} in \textbf{varied environments} using \textbf{Gitflow workflow and branch policies}, enhancing deployment speed by \textbf{60\%} and reducing errors by \textbf{80\%}.}
+    \resumeItem{\textbf{Developed and managed Bash script automation} for \textbf{recurring system tasks} (\textbf{data backup}, \textbf{data retention}, \textbf{server configuration} ...), reducing manual intervention by \textbf{35\%} and cutting execution time by \textbf{30\%}.}
+    \resumeItem{\textbf{Successfully migrated services}, originally deployed directly on servers, to a \textbf{Kubernetes-based microservices architecture}: containerized applications using \textbf{Docker}, packaged into \textbf{Helm charts}, and implemented automated deployments via \textbf{GitLab CI/CD} and \textbf{ArgoCD}.}
+    \resumeItem{\textbf{Implemented proactive alert mechanisms} using \textbf{Grafana} and \textbf{Prometheus} to detect \textbf{system anomalies} and \textbf{send notifications} via \textbf{multiple channels}. \textbf{Integrated Loki} to filter \textbf{sensitive log data} and identify \textbf{log errors}, triggering \textbf{timely alerts}.}
+    \resumeItem{\textbf{Communicated and collaborated effectively} with \textbf{cross-functional teams}, including \textbf{development and testing teams} to \textbf{design, build, and support systems} that align with \textbf{business requirements}.}
+    % \resumeItem{\textbf{Created and updated system documentation} to equip the team with essential knowledge for understanding the system and enhancing problem-solving efficiency.}
+\resumeItemListEnd
 
 % ANTOREE EDUDEV LLC
 \resumeSubheading
-    {ANTOREE EDUDEV LLC}{}
+    {ANTOREE EDUDEV LLC}{}%
     {DevOps Engineer Internship}{Mar 2023 -- May 2023}
-    \resumeItemListStart
-        \resumeItem{\textbf{Managed scalable and resilient AWS infrastructure} (\textbf{ECS, ECR, EC2, ELB, S3, Route 53}) for applications across \textbf{Staging and Production environments}.}
-        \resumeItem{\textbf{Automated CI/CD pipelines} with \textbf{Jenkins} for faster deployments and fewer errors.}
-        \resumeItem{\textbf{Reduced operational costs} by \textbf{30\% (\$1000+ monthly)} through \textbf{resource optimization, rightsizing, and data retention policies}, while maintaining system uptime and performance.}
-    \resumeItemListEnd
+\resumeItemListStart
+    \resumeItem{\textbf{Managed scalable and resilient AWS infrastructure} (\textbf{ECS, ECR, EC2, ELB, S3, Route 53}) for applications across \textbf{Staging and Production environments}.}
+    \resumeItem{\textbf{Automated CI/CD pipelines} with \textbf{Jenkins} for faster deployments and fewer errors.}
+    \resumeItem{\textbf{Reduced operational costs} by \textbf{30\% (\$1000+ monthly)} through \textbf{resource optimization, rightsizing, and data retention policies}, while maintaining system uptime and performance.}
+\resumeItemListEnd
 \resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
@@ -209,22 +208,22 @@
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
+\vspace{3pt}
+\resumeSubHeadingListStart
     \resumeEducationHeading
-      {Ton Duc Thang University - TDTU}{}
-      {Bachelor of Computer Networks and Data Communication}{Sep 2019 \textbf{--} Sep 2023}
+      {Ton Duc Thang University - TDTU}{}%
+      {Bachelor of Computer Networks and Data Communication}{Sep 2019 \textbf{--} Sep 2023}%
       {\textbf{GPA: 7.96/10.0}}{}
-  \resumeSubHeadingListEnd
-  
+\resumeSubHeadingListEnd
+
 %----------------------------------------------------------------------------------------
 %CERTIFICATES
 %----------------------------------------------------------------------------------------
 
-\section{Certificates}\
-  \resumeSubHeadingListStart    
+\section{Certificates}
+\resumeSubHeadingListStart    
     \resumeOrganizationHeading
       {\href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url}{AWS Certified Solutions Architect - Associate}}{Apr 2024 \textbf{--} Apr 2027}{}{}
-  \resumeSubHeadingListEnd
+\resumeSubHeadingListEnd
 
 \end{document}
