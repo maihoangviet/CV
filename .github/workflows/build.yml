@@ -1,5 +1,11 @@
 name: build
-on: [push]
+on:
+  push:
+    paths:
+      - 'src/**.tex'
+      - '.github/workflows/build.yml'
+      - CNAME
+      - index.html
 jobs:
   build:
     runs-on: ubuntu-latest
