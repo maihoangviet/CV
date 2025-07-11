@@ -2,8 +2,8 @@ name: build
 on:
   push:
     paths:
-      - 'src/**.tex'
-      - '.github/workflows/build.yml'
+      - "src/**.tex"
+      - ".github/workflows/build.yml"
       - CNAME
       - index.html
 jobs:
@@ -16,8 +16,32 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+      - name: Cache LaTeX auxiliary files
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.DIR }}/*.aux
+            ${{ env.DIR }}/*.lof
+            ${{ env.DIR }}/*.lot
+            ${{ env.DIR }}/*.fls
+            ${{ env.DIR }}/*.out
+            ${{ env.DIR }}/*.toc
+            ${{ env.DIR }}/*.fmt
+            ${{ env.DIR }}/*.fot
+            ${{ env.DIR }}/*.cb
+            ${{ env.DIR }}/*.cb2
+            ${{ env.DIR }}/.*.lb
+            ${{ env.DIR }}/*.bbl
+            ${{ env.DIR }}/*.bcf
+            ${{ env.DIR }}/*.blg
+            ${{ env.DIR }}/*-blx.aux
+            ${{ env.DIR }}/*-blx.bib
+            ${{ env.DIR }}/*.run.xml
+          key: ${{ runner.os }}-latex-${{ hashFiles('${{ env.DIR }}/*.tex') }}
+          restore-keys: |
+            ${{ runner.os }}-latex-
       - name: Build LaTeX document
-        uses: dante-ev/latex-action@latest
+        uses: dante-ev/latex-action@edge
         with:
           root_file: ${{ env.FILE }}.tex
           working_directory: ${{ env.DIR }}
@@ -61,7 +85,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       - name: Copy index.html, CNAME
         uses: planetoftheweb/copy-to-branches@v1.3
         env:
