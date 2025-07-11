@@ -85,10 +85,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - name: Copy index.html, CNAME
         uses: planetoftheweb/copy-to-branches@v1.3
         env:
           key: main
           files: index.html CNAME
-          
