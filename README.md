@@ -53,4 +53,4 @@ PS: If you liked the template, do star :star: it! Thanks!
 ### Also, check out
 
 - [gradfolio](https://github.com/jitinnair1/gradfolio) - a minimal, quick-setup template for a personal website/portfolio
-- [Tail](https://github.com/jitinnair1/tail) - a minimal, quick-setup template for a blog
+- [Tail](https://github.com/jitinnair1/tail) - a minimal, quick-setup template for a blog.
