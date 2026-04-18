@@ -1,86 +1,78 @@
 name: build
+
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - "src/**.tex"
+      - "src/**/*.tex"
       - ".github/workflows/build.yml"
       - CNAME
       - index.html
 
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       DIR: src
       FILE: cv
       PDF_NAME: "CV - Mai Hoang Viet - DevOps Engineer.pdf"
     steps:
-      - name: Set up Git repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - name: Cache LaTeX packages
-        uses: actions/cache@v4
+      - name: Detect source changes
+        id: changes
+        uses: dorny/paths-filter@v3
         with:
-          path: |
-            ~/.texlive
-            /tmp/texlive
-            /usr/local/texlive
-          key: texlive-${{ runner.os }}-${{ hashFiles('src/*.tex') }}
-          restore-keys: |
-            texlive-${{ runner.os }}-
+          filters: |
+            tex:
+              - "src/**/*.tex"
 
       - name: Build LaTeX document
+        if: steps.changes.outputs.tex == 'true'
         uses: dante-ev/latex-action@2024-B
         with:
           root_file: ${{ env.FILE }}.tex
           working_directory: ${{ env.DIR }}
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
 
-      - name: Rename and move PDF
-        run: |
-          mkdir -p github_artifacts
-          mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/"${{ env.PDF_NAME }}"
-
-      - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdf-artifact
-          path: ./github_artifacts
-          retention-days: 1
-
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Cache static files
-        uses: actions/cache@v4
-        with:
-          path: |
-            index.html
-            CNAME
-          key: static-files-${{ runner.os }}-${{ hashFiles('index.html', 'CNAME') }}
-
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: pdf-artifact
-          path: github_artifacts
-
-      - name: Move files
+      - name: Prepare deploy directory
         run: |
           mkdir -p github_deploy
-          mv github_artifacts/* github_deploy/
+          cp index.html ./github_deploy/
+          if [ -f CNAME ]; then cp CNAME ./github_deploy/; fi
 
-      - name: Deploy on orphan branch
+      - name: Use newly built PDF
+        if: steps.changes.outputs.tex == 'true'
+        run: cp "${{ env.DIR }}/${{ env.FILE }}.pdf" "./github_deploy/${{ env.PDF_NAME }}"
+
+      - name: Reuse latest published PDF
+        if: steps.changes.outputs.tex != 'true'
+        run: |
+          git fetch origin build --depth=1
+          if ! git show "origin/build:${{ env.PDF_NAME }}" > "./github_deploy/${{ env.PDF_NAME }}"; then
+            echo "No published PDF found in build branch. Push a src/**/*.tex change once to generate the first PDF."
+            exit 1
+          fi
+
+      - name: Verify deploy assets
+        run: |
+          test -f ./github_deploy/index.html
+          test -s "./github_deploy/${{ env.PDF_NAME }}"
+
+      - name: Deploy to build branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -88,26 +80,3 @@ jobs:
           publish_branch: build
           force_orphan: true
           enable_jekyll: false
-
-  sync-assets-to-build:
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache git data
-        uses: actions/cache@v4
-        with:
-          path: |
-            .git
-          key: git-cache-${{ runner.os }}-${{ github.sha }}
-          restore-keys: |
-            git-cache-${{ runner.os }}-
-
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Copy index.html, CNAME
-        uses: planetoftheweb/copy-to-branches@v1.3
-        env:
-          key: main
-          files: index.html CNAME
