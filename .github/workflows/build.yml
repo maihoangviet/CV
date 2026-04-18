@@ -76,10 +76,9 @@ jobs:
           test -s "./github_deploy/${{ env.PDF_NAME }}"
 
       - name: Deploy to build branch
-        uses: peaceiris/actions-gh-pages@v4.0.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./github_deploy
-          publish_branch: build
-          force_orphan: true
-          enable_jekyll: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: build
+          folder: github_deploy
+          clean: true
