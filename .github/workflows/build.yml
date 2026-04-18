@@ -14,6 +14,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
@@ -28,20 +31,20 @@ jobs:
       PDF_NAME: "CV - Mai Hoang Viet - DevOps Engineer.pdf"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
       - name: Detect source changes
         id: changes
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4
         with:
           filters: |
             tex:
               - "src/**/*.tex"
 
       - name: Build LaTeX document
-        if: steps.changes.outputs.tex == 'true'
+        if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.tex == 'true'
         uses: dante-ev/latex-action@2024-B
         with:
           root_file: ${{ env.FILE }}.tex
@@ -55,11 +58,11 @@ jobs:
           if [ -f CNAME ]; then cp CNAME ./github_deploy/; fi
 
       - name: Use newly built PDF
-        if: steps.changes.outputs.tex == 'true'
+        if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.tex == 'true'
         run: cp "${{ env.DIR }}/${{ env.FILE }}.pdf" "./github_deploy/${{ env.PDF_NAME }}"
 
       - name: Reuse latest published PDF
-        if: steps.changes.outputs.tex != 'true'
+        if: github.event_name != 'workflow_dispatch' && steps.changes.outputs.tex != 'true'
         run: |
           git fetch origin build --depth=1
           if ! git show "origin/build:${{ env.PDF_NAME }}" > "./github_deploy/${{ env.PDF_NAME }}"; then
@@ -73,7 +76,7 @@ jobs:
           test -s "./github_deploy/${{ env.PDF_NAME }}"
 
       - name: Deploy to build branch
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v4.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./github_deploy
