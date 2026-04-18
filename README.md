@@ -1,56 +1,108 @@
-# autoCV
+# CV (LaTeX + GitHub Pages)
 
-A clean CV template in LaTeX along with a GitHub action that complies the `*.tex` file and publishes a new PDF version when new changes are pushed to the repo
+This repository contains a personal CV in LaTeX and a GitHub Actions pipeline that builds and publishes the latest PDF automatically.
 
-## Template Design
+## What this setup does
 
-The template is designed to be clean with sections for
+- Builds `src/cv.tex` on each eligible push to `main`
+- Renames the generated PDF to a custom public filename
+- Publishes the PDF to the `build` branch
+- Copies static web files (`index.html`, `CNAME`) to `build`
+- Serves the CV through GitHub Pages with a redirect page
 
-- Tabular sections for Work Experience, Education and Projects
-- Support for including a list of publications read from a `*.bib` file
-- Header with Font Awesome icons
+## Repository structure
 
-## Quickstart
+- `src/cv.tex`: main CV source file
+- `.github/workflows/build.yml`: CI build and publish pipeline
+- `index.html`: redirect page to the generated PDF
+- `CNAME`: custom domain for GitHub Pages (optional)
+- `Makefile`: legacy local build commands (currently expects `cv.tex` at repo root)
 
-- Fork this repo (you can use the `Use this template` button)
-- Give the workflow write permissions for your forked repo (Settings -> Actions -> General)
-- Modify the `cv.tex` file and push changes to your repo
-- Set GitHub pages source to build branch (Settings -> Pages)
-- The complied PDF will be available under the `build` branch
+## Prerequisites
 
-You can get a direct link to the generated PDF which you can use on your website, LinkedIn etc. that will always point to the latest version of your CV. Once your site is published, your CV will be accessible at: `https://username.github.io/repo-name/`
+- A GitHub account (for fork + Actions + Pages)
+- LaTeX installed locally if you want to build on your machine
+- Recommended local tools: `latexmk`, `pdflatex`
 
-NOTE: For the direct link to work, after editing your copy of `cv.tex` and pushing changes to your repo, under Settings -> Pages set your Github Pages source to the `build` directory
+## Quickstart (GitHub)
 
-![GitHub Pages](https://i.imgur.com/lwATw1o.png)
+1. Fork this repository.
+2. In your fork, enable workflow write permission:
+   `Settings -> Actions -> General -> Workflow permissions -> Read and write permissions`.
+3. Edit `src/cv.tex`.
+4. Push to `main`.
+5. Configure GitHub Pages source:
+   `Deploy from a branch -> build -> /(root)`.
 
-## This template on Overleaf
+After the workflow succeeds, your CV is available at:
+`https://<username>.github.io/<repo>/`
 
-[![Overleaf](https://img.shields.io/badge/Overleaf-47A141.svg?style=for-the-badge&logo=Overleaf&logoColor=white)](https://www.overleaf.com/latex/templates/autocv/scfvqfpxncwb)
+If you use a custom domain, update `CNAME` and your DNS records.
 
-Also, if you have a premium subscription to Overleaf, you can use Overleaf's GitHub integration to push changes to your GitHub repo directly from Overleaf.
+## Local build
 
-## Compiling the CV on your local computer
+Build from repository root:
 
-- type `make` in the `autoCV` directory to produce file `cv.pdf`
-- you can optionally type `make clean` or `make distclean` to remove intermediate files
+```bash
+latexmk -pdf src/cv.tex
+```
 
-## Detailed Instructions
+Clean intermediate files:
 
-[.. are available here](https://github.com/jitinnair1/autoCV/wiki/How-to-use-autoCV:-Detailed-Instructions)
+```bash
+latexmk -c src/cv.tex
+```
 
-## More options
+Full clean (including generated PDF):
 
-- If you'd like a custom URL like `cv.name.com` check out [this page](https://github.com/jitinnair1/autoCV/wiki/Custom-URL-for-your-CV)
-- If you want to add use different versions of the CV for different languages, you can modify the script [as seen here](https://github.com/MateusRosario/myAutoCV/blob/main/.github/workflows/build.yml) (from Mateus Rosario's [fork](https://github.com/MateusRosario/myAutoCV) of this repo)  
+```bash
+latexmk -C src/cv.tex
+```
 
-## Issues
+Alternative (build inside `src/`):
 
-Please start a new discussion or issue if you encounter problems
+```bash
+cd src
+latexmk -pdf cv.tex
+```
 
-PS: If you liked the template, do star :star: it! Thanks!
+## PDF filename and redirect
 
-### Also, check out
+Public PDF name is controlled by `PDF_NAME` in `.github/workflows/build.yml`.
 
-- [gradfolio](https://github.com/jitinnair1/gradfolio) - a minimal, quick-setup template for a personal website/portfolio
-- [Tail](https://github.com/jitinnair1/tail) - a minimal, quick-setup template for a blog.
+If you change it, also update the redirect target in `index.html`:
+
+```html
+window.location.href = "./<your-pdf-name>.pdf"
+```
+
+This keeps your landing URL stable while serving the latest generated PDF.
+
+## Deployment workflow summary
+
+`build.yml` runs 3 jobs:
+
+1. `build`:
+   compiles LaTeX in `src/`, renames PDF, uploads artifact.
+2. `deploy`:
+   publishes artifact contents to `build` branch.
+3. `sync-assets-to-build`:
+   copies `index.html` and `CNAME` from `main` to `build`.
+
+Workflow triggers on pushes to `main` when these files change:
+
+- `src/**.tex`
+- `.github/workflows/build.yml`
+- `index.html`
+- `CNAME`
+
+## Troubleshooting
+
+- Workflow did not run:
+  check if the push is on `main` and includes a watched path.
+- Pages shows 404:
+  verify Pages source is `build` branch and `/(root)`.
+- Wrong file opens or redirect breaks:
+  verify `PDF_NAME` in workflow matches `index.html` redirect target.
+- Build branch not updating:
+  check Actions logs for failed `build` or `deploy` jobs.
