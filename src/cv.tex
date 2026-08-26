@@ -152,7 +152,7 @@
 \vspace{3pt}
 \resumeSubHeadingListStart
     \small{\item{
-      DevOps Engineer with 2.5 years of hands-on experience in on-premises infrastructure, specializing in Kubernetes, CI/CD pipelines and GitOps. Passionate about integrating public cloud with on-premises systems to foster innovation and enhance performance. Focused on deployment efficiency through workflow optimization, automation, and seamless integration across environments. I stay up to date with new technologies and collaborate closely with teams to align solutions with business goals through clear communication and proactive problem solving.
+      DevOps Engineer with 3.5 years of experience operating on-premises Kubernetes platforms, currently managing 10+ RKE clusters across 60+ VMs with a full observability stack (Prometheus, Grafana, ELK, OpenTelemetry). Experienced in GitOps delivery (ArgoCD, GitLab CI/CD) for 50+ applications, infrastructure automation, and database reliability.
     }}
 \resumeSubHeadingListEnd
 
@@ -164,16 +164,12 @@
 \vspace{3pt}
 \resumeSubHeadingListStart
     \small{\item{
-        \textbf{Containerization \& Orchestration:} Docker, Kubernetes \\ \vspace{3pt}
-        \textbf{CI/CD \& GitOps:} GitLab CI/CD, Jenkins, ArgoCD, Helm \\ \vspace{3pt}
-        \textbf{Secret Management:} Vault \\ \vspace{3pt}
-        \textbf{Databases:} MongoDB, MySQL, PostgreSQL, Oracle, SQL Server \\ \vspace{3pt}
-        \textbf{Observability:} Grafana, Prometheus, Loki, Elasticsearch, Logstash, Kibana, OpenTelemetry, Jaeger \\ \vspace{3pt}
-        \textbf{Service Mesh:} Istio \\ \vspace{3pt}
-        \textbf{Cloud \& Virtualization:} AWS, Digital Ocean, Contabo, VMware, VirtualBox, Vagrant \\ \vspace{3pt}
-        \textbf{Infrastructure as Code (IaC):} Terraform, Ansible \\ \vspace{3pt}
-        \textbf{Programming Languages:} Bash Scripting, Python \\ \vspace{3pt}
-        \textbf{Others:} Microservices, CloudFlare \\ \vspace{3pt}
+        \textbf{Containerization \& Orchestration:} Docker, Kubernetes, RKE, Rancher, Istio, Longhorn, Harbor \\ \vspace{3pt}
+        \textbf{CI/CD, GitOps \& Automation:} GitLab CI/CD, Jenkins, GitHub Actions, ArgoCD, Helm, Vault, Bash Scripting \\ \vspace{3pt}
+        \textbf{Cloud \& Virtualization:} AWS (EC2, S3, ECS, ECR, ELB, Route 53, IAM), VMware \\ \vspace{3pt}
+        \textbf{Observability:} Prometheus, Grafana, Loki, ELK (Elasticsearch, Logstash, Kibana), Filebeat, OpenTelemetry, Jaeger \\ \vspace{3pt}
+        \textbf{Databases:} MySQL (Galera Cluster), PostgreSQL, MongoDB, Redis, Elasticsearch \\ \vspace{3pt}
+        \textbf{Operating Systems \& Networking:} Linux (Ubuntu, RHEL), Nginx, HAProxy, Kong, DNS, TLS/SSL, CloudFlare \\ \vspace{3pt}
     }}
 \resumeSubHeadingListEnd
 
@@ -190,9 +186,11 @@
     {CIRCLE K VIETNAM}{}%
     {IT Development Operations Specialist}{Jan 2025 -- Present}
 \resumeItemListStart
-    \resumeItem{\textbf{Supervised and administered 10+ Kubernetes clusters} and \textbf{60+ on-premises VMs} using \textbf{RKE} and \textbf{Rancher UI}, orchestrating \textbf{microservices deployments} in \textbf{Staging} and \textbf{Production} with \textbf{Helm Charts}, improving platform scalability and operational efficiency.}
-    \resumeItem{\textbf{Built} and \textbf{operated} an \textbf{observability stack} with \textbf{Prometheus}, \textbf{Grafana}, \textbf{ELK Stack} (\textbf{Elasticsearch}, \textbf{Logstash}, \textbf{Kibana}), \textbf{Filebeat}, \textbf{Jaeger}, and \textbf{OpenTelemetry}, providing centralized monitoring, logging, and tracing for \textbf{multiple Kubernetes clusters}. Configured alert rules for critical resources (\textbf{Node}, \textbf{Pod}, \textbf{PVC}, \textbf{Galera Cluster, ...}) and synchronized \textbf{40M+ records} from \textbf{MySQL} to \textbf{Elasticsearch}. These improvements significantly reduced incident detection and troubleshooting time.}
-    \resumeItem{\textbf{Administered} and \textbf{optimized 10+ high-availability database clusters} across \textbf{MySQL}, \textbf{PostgreSQL}, \textbf{MongoDB}, \textbf{Redis}, and \textbf{Elasticsearch}, designing \textbf{automated cross-system backup and restore workflows} with \textbf{Bash} and \textbf{CronJobs} --- including \textbf{table partitioning}, \textbf{retention policies}, and \textbf{Slack alerting} on job status --- and \textbf{tuning restore configurations} to \textbf{reduce restore time by 50\%}, ensuring \textbf{reliable data recovery} and \textbf{data consistency}.}
+    \resumeItem{Supervised and administered \textbf{10+ Kubernetes clusters} and \textbf{60+ on-premises VMs} using \textbf{RKE} and \textbf{Rancher UI}, orchestrating \textbf{microservices} deployments in Staging and Production with \textbf{Helm Charts}.}
+    \resumeItem{Provisioned \textbf{Kubernetes} clusters with a standardized platform baseline --- \textbf{Longhorn}, \textbf{kube-prometheus-stack}, \textbf{Rancher}, \textbf{ECK}, \textbf{Kong}, and \textbf{OpenTelemetry}/\textbf{Jaeger} --- in UAT and Production.}
+    \resumeItem{Replaced manual SSH-based deployments with \textbf{Jenkins} CI/CD pipelines for internal platform services.}
+    \resumeItem{Built and operated an observability stack --- \textbf{Prometheus}, \textbf{Grafana}, \textbf{ELK} (\textbf{Elasticsearch}, \textbf{Logstash}, \textbf{Kibana}), \textbf{Filebeat}, \textbf{Jaeger}, \textbf{OpenTelemetry} --- across multiple \textbf{Kubernetes} clusters, with alert rules on Node, Pod, PVC, Database, ..., and synchronized \textbf{100M+ records} from \textbf{MySQL} to \textbf{Elasticsearch}.}
+    \resumeItem{Administered and optimized \textbf{10+ high-availability database clusters} (\textbf{MySQL}, \textbf{PostgreSQL}, \textbf{MongoDB}, \textbf{Redis}, \textbf{Elasticsearch}), automating cross-system backup and restore with \textbf{Bash} and \textbf{CronJobs} --- including table partitioning, retention policies, and \textbf{Slack} alerting --- and tuning configurations to \textbf{cut restore time by 50\%}.}
 \resumeItemListEnd
 
 % DEEP TECH TECHNOLOGY JOIN STOCK COMPANY
@@ -200,12 +198,12 @@
     {DEEP TECH TECHNOLOGY JSC}{}%
     {DevOps Engineer}{Jun 2023 -- Dec 2024}
 \resumeItemListStart
-    \resumeItem{\textbf{Administered} and \textbf{scaled 6+ Kubernetes clusters} across \textbf{30+ on-premise servers}, applying \textbf{GitOps} principles via \textbf{ArgoCD} for continuous and reliable \textbf{microservices} delivery in \textbf{multiple environments} systems.}
-    \resumeItem{\textbf{Designed} and \textbf{optimized GitLab CI/CD pipelines} for \textbf{50+ applications} in \textbf{varied environments} following \textbf{Git flow} and \textbf{branch protection policies}, enhancing deployment speed and reducing human errors.}
-    \resumeItem{\textbf{Automated operational tasks} (e.g., \textbf{backup}, \textbf{log rotation}, \textbf{config sync}) with \textbf{Bash scripting} and \textbf{CronJobs}, cutting manual workload by \textbf{35\%} and improving system consistency.}
-    \resumeItem{\textbf{Migrated 10+ legacy services} from \textbf{bare-metal} execution to \textbf{Kubernetes} workloads managed with \textbf{Helm}, enabling zero-downtime releases, achieving \textbf{99.95\%} system uptime, and reducing deployment duration by \textbf{50\%}.}
-    \resumeItem{\textbf{Implemented proactive monitoring} and \textbf{alerting} with \textbf{Prometheus} and \textbf{Grafana}, defining custom \textbf{alert rules (CPU, memory, disk)} and integrating notifications via Telegram, reducing \textbf{MTTD} by \textbf{40\%}.}
-    \resumeItem{\textbf{Filtered sensitive logs} and \textbf{detected anomalies} using \textbf{Loki}, integrating with the \textbf{alert system} to identify \textbf{suspicious log patterns} (e.g., repeated \textbf{5xx errors}, \textbf{auth failures}) and \textbf{trigger early warnings.}}
+    \resumeItem{Administered and scaled \textbf{6+ Kubernetes clusters} across \textbf{30+ on-premise servers}, applying \textbf{GitOps} via \textbf{ArgoCD} for \textbf{microservices} delivery across multiple environments.}
+    \resumeItem{Centralized \textbf{GitLab CI} for \textbf{50+ applications} into a shared template library --- \textbf{Docker} multi-stage builds, \textbf{BuildKit} caching, \textbf{Git flow} tag-based promotion --- cutting per-service pipeline config by \textbf{$\sim$80\%}.}
+    \resumeItem{Deployed a \textbf{Vault} HA cluster (\textbf{Raft}) with \textbf{argocd-vault-plugin} in \textbf{ArgoCD}, replacing plaintext secrets in Git with \textbf{2,400+ runtime-injected secret references} under per-environment least-privilege \textbf{Kubernetes auth}.}
+    \resumeItem{Operated an \textbf{Istio} service mesh for ingress routing, managing \textbf{60+ Gateways} and \textbf{30+ VirtualServices}.}
+    \resumeItem{Migrated \textbf{10+ legacy services} from bare-metal to \textbf{Kubernetes} workloads managed with \textbf{Helm}, enabling zero-downtime releases, achieving \textbf{99.95\% uptime} and reducing deployment duration by \textbf{50\%}.}
+    \resumeItem{Implemented monitoring and log analytics with \textbf{Prometheus}, \textbf{Grafana}, and \textbf{Loki} --- alert rules (CPU, memory, disk) via \textbf{Telegram}, plus log-pattern detection for 5xx and auth failures --- reducing \textbf{MTTD by 40\%}.}
     % \resumeItem{\textbf{Collaborated} with \textbf{developers}, \textbf{QA}, and \textbf{BA teams} to \textbf{design, improve deployment workflows} and \textbf{support system access}, aligning with \textbf{project requirements} and \textbf{DevOps best practices}.}
     \resumeItemListEnd
 
@@ -214,9 +212,7 @@
     {ANTOREE EDUDEV LLC}{}%
     {DevOps Engineer Internship}{Mar 2023 -- May 2023}
 \resumeItemListStart
-    \resumeItem{\textbf{Managed AWS cloud infrastructure} including \textbf{ECS}, \textbf{ECR}, \textbf{EC2}, \textbf{S3}, \textbf{ELB}, and \textbf{Route 53} across \textbf{Staging} and \textbf{Production environments}, supporting high availability and scalability.}
-    \resumeItem{\textbf{Developed CI/CD pipelines} with \textbf{Jenkins} to accelerate deployments and minimize manual effort.}
-    \resumeItem{\textbf{Optimized cloud resource usage} through \textbf{resource optimization}, \textbf{rightsizing} and \textbf{data retention policies}, leading to a \textbf{30\% reduction in monthly AWS costs} (\textbf{over \$1,000}).}
+    \resumeItem{Managed \textbf{AWS} infrastructure (\textbf{ECS}, \textbf{ECR}, \textbf{EC2}, \textbf{S3}, \textbf{ELB}, \textbf{Route 53}) with \textbf{Jenkins} CI/CD across Staging and Production, cutting monthly \textbf{AWS costs by 30\% (\$1,000+)} via rightsizing and retention policies.}
 \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -227,10 +223,9 @@
 \section{Education}
 \vspace{3pt}
 \resumeSubHeadingListStart
-    \resumeEducationHeading
-      {Ton Duc Thang University - TDTU}{}%
-      {Bachelor of Computer Networks and Data Communication}{Sep 2019 \textbf{--} Sep 2023}%
-      {\textbf{GPA: 7.96/10.0}}{}
+    \resumeSubheading
+      {Ton Duc Thang University - TDTU}{Sep 2019 \textbf{--} Sep 2023}%
+      {Bachelor of Computer Networks and Data Communication --- \textbf{GPA: 7.96/10.0}}{}
 \resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------

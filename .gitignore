@@ -23,5 +23,8 @@
 *.backup
 *.gz~
 *.synctex(busy)
+*.zip
+*.json
+
 
 __latexmk__
