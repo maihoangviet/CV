@@ -1,22 +1,151 @@
-18/02/2025
-% CÓ THỂ CẦN PHẢI BỎ Ý VMware ESXi.
-% CÓ THỂ CHỈNH LẠI Ý Created and updated system documentation THÀNH TASK LIÊN QUAN TỚI TECH CỦA DEVOPS NHIỀU HƠN.
-% CÓ THỂ BỔ SUNG CÁC Ý ĐỂ THÊM SỐ LIỆU VÀO NHIỀU HƠN
+================================================================================
+GHI CHÚ CV  —  cập nhật 27/08/2026
+Nội dung cũ (nhật ký ý tưởng CV tháng 02/2025) đã bị thay thế.
+Xem lại bản cũ:   git show 8306ad8:note.txt
+================================================================================
 
 
-23/02/2025
-% CÂN NHẮC BỎ LUÔN Ý Created and updated system documentation
-% THÊM VÀI TASK LIÊN QUAN TỚI DEVOPS NỮA DO CÒN THIẾU TỚI 6 DÒNG (THÊM 3 Ý VỚI MỖI Ý 2 DÒNG) HOẶC UPDATE THÊM CÁC TASK SẴN CÓ ĐỂ DÀI HƠN
-% CÂN NHẮC UPDATE THÊM CÁC Ý 1, 2, 3 ĐỂ RÕ HƠN
-% BỔ SUNG THÊM CÁC SỐ LIỆU VÀO CÁC Ý NHIỀU HƠN.
-% SUY NGHĨ KỸ CÁC TASK CÓ NÊN GHI NGẮN GỌN HƠN (THÊM TASK MỚI), KHÔNG CẦN GHI CÁC Ý NHƯ: for consistent and efficient, enhancing deployment speed and reducing errors, to ensure optimal performance, security, and stability, supporting timely troubleshooting and infrastructure issue resolution, ... CÓ HỢP LÝ HAY KHÔNG
+## 1. TRẠNG THÁI HIỆN TẠI
 
-24/02/2025
-% CÓ THỂ PHẢI THÊM SỐ LIỆU VÀO CÁC Ý ***
-% UPDATE THÊM CÁC Ý 1, 2 ĐỂ RÕ HƠN
-% PHẢI THÊM CÁC TASK DEVOPS DO CÒN DƯ TỚI 5 HÀNG (THAM KHẢO CV CỦA CÁC ANH DEVOPS TRÊN LINKEDIN)
-% CŨNG CÓ THỂ MỖI Ý NGẮN LẠI NHƯNG NHIỀU Ý (GIỐNG CÁC ANH DEVOPS TRÊN LINKEDIN)
-% Ý 4, 5 CẢM THẤY HƠI DÀI QUÁ - MỘT Ý NÊN 2 HÀNG LÀ ĐẸP
+File           : src/cv.tex
+Độ dài         : 1 trang (trước đây 2 trang)
+Branch         : PR #22 đã merge vào main, CI build xong, đã publish
+Kinh nghiệm    : 3.5 năm (Mar 2023 → nay)
+Số bullet      : Circle K 4  |  Deep Tech 6  |  Antoree 1
+Lề trang       : 40.2pt trên / 40.1pt dưới
 
-26/02/2025
-% TƯƠNG TỰ NGÀY 24/02/2025
+
+## 2. RÀNG BUỘC LAYOUT  —  QUAN TRỌNG NHẤT, DỄ QUÊN NHẤT
+
+(a) itemsep VÔ TÁC DỤNG nếu không nới textheight trước.
+    Trang đang co glue lại để nhồi vừa 1 trang, nên khoảng cách thêm vào
+    bị nuốt mất. Bằng chứng đo được: tăng itemsep 0.5pt → 1.5pt mà vị trí
+    chữ "Certificates" gần như đứng yên (y = 713.1 → 714.7).
+    ⇒ Muốn giãn dòng thì PHẢI nới \addtolength{\textheight} trước.
+
+(b) Bảng ngưỡng đã đo thực tế:
+
+      textheight   itemsep tối đa   lề dưới còn lại
+      1.00in       0pt              51.7pt
+      1.15in       3pt              40.1pt   ← ĐANG DÙNG
+      1.25in       4pt              32.8pt
+      1.35in       4pt              27.0pt
+      1.55in       4pt              12.1pt   ← quá sát mép, không nên
+
+    Lề trên cố định 40.2pt. Chọn cấu hình nào cho lề dưới ≈ 40pt thì cân đối.
+
+(c) LUẬT DÒNG MỒ CÔI: dòng cuối của một bullet không được chỉ có 1–3 chữ.
+    Cột chữ rộng đến x = 576. Đo xEnd của dòng cuối:
+       xEnd < 200   → mồ côi, phải sửa
+       xEnd ≥ 270   → chấp nhận được
+    Cách sửa nhanh: bỏ bớt chữ thừa ở giữa câu, đừng ép xuống dòng.
+
+(d) Tiết kiệm được 3 dòng là đủ để section Certificates nhảy lên trang 1.
+    KHÔNG cần gộp Certificates vào Education.
+
+
+## 3. LỆNH KIỂM TRA (chạy trong thư mục src/)
+
+  # build
+  latexmk -pdf -g -interaction=nonstopmode cv.tex
+
+  # số trang
+  pdfinfo cv.pdf | grep Pages
+
+  # toạ độ từng chữ — dùng để đo lề và tìm dòng mồ côi
+  pdftotext -bbox cv.pdf -
+
+  # đếm bullet (phải là 13: 4 CK + 6 DT + 1 Antoree + 1 comment + 1 macro)
+  grep -c '\resumeItem{' cv.tex
+
+  # kiểm các quy ước chính tả đã chốt
+  grep -c 'on-premise[^s]' cv.tex        # phải = 0
+  grep -o 'Administered' cv.tex | wc -l  # phải = 1
+
+
+## 4. NGUỒN SỐ LIỆU  (để trả lời khi phỏng vấn hỏi)
+
+  gitops-main.zip          → 2.431 placeholder AVP trên 213 manifest
+                           → 60 Gateway, 31 VirtualService, 13 EnvoyFilter
+  common-pipeline-main.zip → 51 app, 27 app dùng template chung
+                           → legacy median 66,5 dòng vs template median 14 dòng
+                           → = giảm ~80%  (KHÔNG phải 84% — con số cũ tính sai
+                             vì trộn lẫn app frontend có stage rsync)
+  Trello.json              → 487 card, 464 card ở cột Done
+                           → 17 card project AutoMatching
+                           → 26 card ILM/retention, 28 card disk/capacity
+                           → 4–5 service được làm CI/CD Jenkins
+
+  LƯU Ý: cả 3 file đều nằm trong .gitignore (*.zip, *.json). Đừng commit.
+
+
+## 5. Ý ĐÃ ĐỀ XUẤT NHƯNG CHƯA DÙNG  (còn nguyên giá trị, lấy ra khi cần)
+
+  [D] Đưa một hệ thống mới lên production từ con số 0  —  MẠNH NHẤT
+      17 card AutoMatching, trải đủ tầng: K8s + Helm, MongoDB shard + mongos,
+      Redis Sentinel, backup MySQL, cấu hình domain, Harbor retention,
+      exporter + dashboard + alert, ILM cho index, phân quyền team dev xem log.
+      Draft: "Delivered a new production system end-to-end — Helm releases on
+      Kubernetes, a sharded MongoDB cluster, Redis Sentinel, DNS, Harbor
+      retention, and Grafana alerting — from first deploy to go-live."
+
+  [F] Độ tin cậy & dung lượng
+      ILM cho Elasticsearch, rotate log, Harbor giữ 5 image gần nhất, giới hạn
+      CPU/RAM cho workload. Chặn full disk và chết node. Là bullet KẾT QUẢ —
+      thứ mà phần Circle K đang thiếu.
+
+  [E] Self-service cho dev team (chỉ 4 card, hơi mỏng — nên ghép vào D)
+      Phân quyền Elasticsearch/Kibana, cài Dozzle để dev tự xem log.
+
+  [H] Vá CVE / security patch  —  ĐÃ LOẠI, chỉ 6 card, quá mỏng.
+
+
+## 6. QUY TẮC ĐÃ CHỐT  (Vincent đã quyết — đừng đề xuất ngược lại)
+
+  Cách viết CV:
+  - Bold CẢ số LẪN tên tech.
+  - Ghi % thay vì ghi "từ ~65 xuống ~14 dòng".
+  - Đừng lạm dụng số nhiều. Bỏ con số khi nó không thêm sức nặng.
+  - 51 applications thì ghi "50+ applications" cho tròn.
+  - Giữ dấu "..." trong "Node, Pod, PVC, Database, ...".
+  - Certificates giữ là section RIÊNG, không gộp vào Education.
+  - Mỗi bullet phải có động từ mở đầu KHÁC NHAU (hiện 11 bullet / 11 động từ).
+  - Viết "on-premises" (không phải "on-premise").
+  - "cron jobs" — chạy bằng crontab trên host, KHÔNG phải CronJob của K8s.
+
+  Skills (chốt 27/08/2026):
+  - Đã bỏ khỏi Skills: VMware, GitHub Actions, DNS, TLS/SSL (không đủ bằng chứng
+    hoặc là kiến thức nền ai cũng có). Nhãn "Cloud & Virtualization" đổi thành
+    "Cloud" vì bỏ VMware xong thì Virtualization không còn thành viên.
+  - Kafka: CHƯA đưa lên CV — Vincent làm không nhiều, dù Trello có 12 card.
+    Đừng đề xuất lại.
+  - Longhorn, Kong: để nguyên ở Skills, KHÔNG cần thêm bằng chứng vào
+    Experience. Đừng đề xuất lại.
+
+  Cách làm việc:
+  - LUÔN cho Vincent review trước khi ghi vào file.
+  - Ngôn ngữ: trao đổi và file ghi chú này viết TIẾNG VIỆT.
+    Riêng commit message và mô tả PR thì viết TIẾNG ANH.
+
+
+## 7. LỖ HỔNG CÒN LẠI  (chưa xử lý, cân nhắc sau)
+
+  - Terraform / Ansible KHÔNG còn xuất hiện ở đâu trên CV (chỉ học, chưa áp
+    dụng thực tế). ATS nào lọc theo 2 từ khoá này sẽ loại. Vincent đã biết
+    và chấp nhận.
+  - Chưa có section Projects, trong khi CV có link GitHub và Medium.
+  - Chứng chỉ: mới có AWS SAA. Với CV nặng về Kubernetes thì CKA là thứ
+    thiếu rõ nhất.
+
+
+## 8. CẢNH BÁO BẢO MẬT  (trong các file zip đã đọc — KHÔNG được public)
+
+  - gitops-main/provision.md chứa JOIN TOKEN THẬT của MicroK8s và IP nội bộ
+    (192.168.1.230:25000/..., 10.23.209.1, 172.17.0.1).
+    Join token cho phép thêm node vào cluster → phải xoá trước khi public repo.
+  - apps/wescan-frontend/.gitlab-ci.yml chứa IP production và SSH port thật
+    (103.9.158.166, 103.9.158.211, 118.69.60.36, port 3122/3322).
+    Private key thì đã dùng CI variable đúng cách.
+  - Trello.json chứa tên đồng nghiệp, hostname nội bộ, thông tin hợp đồng.
+
+================================================================================
