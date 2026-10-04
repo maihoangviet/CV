@@ -1,5 +1,5 @@
 ================================================================================
-GHI CHÚ CV  —  cập nhật 27/08/2026
+GHI CHÚ CV  —  cập nhật 04/10/2026
 Nội dung cũ (nhật ký ý tưởng CV tháng 02/2025) đã bị thay thế.
 Xem lại bản cũ:   git show 8306ad8:note.txt
 ================================================================================
@@ -9,10 +9,11 @@ Xem lại bản cũ:   git show 8306ad8:note.txt
 
 File           : src/cv.tex
 Độ dài         : 1 trang (trước đây 2 trang)
-Branch         : PR #22 đã merge vào main, CI build xong, đã publish
-Kinh nghiệm    : 3.5 năm (Mar 2023 → nay)
-Số bullet      : Circle K 4  |  Deep Tech 6  |  Antoree 1
-Lề trang       : 40.2pt trên / 40.1pt dưới
+Thay đổi gần nhất (04/10/2026): bỏ Antoree (intern), thêm chứng chỉ Azure,
+                 căn lại khoảng cách cho đầy trang
+Kinh nghiệm    : Jun 2023 → nay — Summary ghi "3+ years"
+Số bullet      : Circle K 4  |  Deep Tech 6
+Lề trang       : 40.2pt trên / 41.0pt dưới
 
 
 ## 2. RÀNG BUỘC LAYOUT  —  QUAN TRỌNG NHẤT, DỄ QUÊN NHẤT
@@ -23,16 +24,27 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
     chữ "Certificates" gần như đứng yên (y = 713.1 → 714.7).
     ⇒ Muốn giãn dòng thì PHẢI nới \addtolength{\textheight} trước.
 
-(b) Bảng ngưỡng đã đo thực tế:
+(b) Cấu hình khoảng cách đang dùng (đo 04/10/2026, nội dung đã bỏ Antoree):
 
-      textheight   itemsep tối đa   lề dưới còn lại
-      1.00in       0pt              51.7pt
-      1.15in       3pt              40.1pt   ← ĐANG DÙNG
-      1.25in       4pt              32.8pt
-      1.35in       4pt              27.0pt
-      1.55in       4pt              12.1pt   ← quá sát mép, không nên
+      textheight                         1.15in
+      itemsep giữa bullet                4pt    (\resumeItemListStart)
+      \vspace sau mỗi dòng Skills        4pt
+      \vspace đầu \titleformat{section}  -4pt   (giá trị gốc của template)
+      \vspace{3pt} sau mọi \section      có, kể cả Certificates
+      itemsep giữa 2 dòng chứng chỉ      4pt    (\resumeCertificateListStart)
+      ⇒ lề trên 40.2pt / lề dưới 41.0pt — đã đầy trang, KHÔNG còn dư.
+      Mọi khoảng cách dòng đều cùng nhịp 4pt.
 
-    Lề trên cố định 40.2pt. Chọn cấu hình nào cho lề dưới ≈ 40pt thì cân đối.
+    Mỗi 1pt nới thêm ăn bao nhiêu chiều cao (đo thực tế):
+      itemsep         +1pt  →  ~8pt   (8 khoảng giữa các bullet)
+      Skills vspace   +1pt  →  ~6pt
+      section vspace  +1pt  →  ~5pt
+    Dùng bảng này để bù khi thêm/bớt nội dung. Ví dụ thêm 1 chứng chỉ
+    (~17.5pt) thì trả itemsep về 3pt, Skills về 3pt và section về -4pt
+    (~19pt) là vừa.
+
+    Bảng ngưỡng textheight cũ (đo khi còn Antoree) đã lỗi thời — xem
+    git show 4abd52c:note.txt nếu cần.
 
 (c) LUẬT DÒNG MỒ CÔI: dòng cuối của một bullet không được chỉ có 1–3 chữ.
     Cột chữ rộng đến x = 576. Đo xEnd của dòng cuối:
@@ -42,6 +54,21 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
 
 (d) Tiết kiệm được 3 dòng là đủ để section Certificates nhảy lên trang 1.
     KHÔNG cần gộp Certificates vào Education.
+
+(e) CHỨNG CHỈ: KHÔNG bullet, thẳng lề trái với Skills/Education (x = 46.8pt).
+    \resumeCertificateListStart mở 1 itemize lồng [leftmargin=0pt, label={},
+    itemsep=4pt]. Mỗi \resumeCertificate là 1 \item chứa tabular 1 hàng
+    (tên | ngày), kết thúc bằng \vspace{-2pt} giống \resumeItem. Kết quả đo:
+      · ngày căn mép phải thẳng hàng ngày ở Experience (569.25pt) — nhờ độ
+        rộng \dimexpr\linewidth-0.03\textwidth+0.15in; số 0.15in là
+        leftmargin của \resumeSubHeadingListStart, đổi cái đó thì đổi cả đây
+      · tiêu đề section → dòng đầu = 19.46pt, bằng Experience/Education
+      · 2 dòng chứng chỉ cách nhau 17.5pt; mỗi chứng chỉ thêm tốn ~17.5pt
+    Macro cũ \resumeOrganizationHeading (đã xoá) có hàng thứ 2 rỗng và mỗi
+    \item cách nhau ~25pt → thêm 1 chứng chỉ là tràn sang trang 2.
+
+(f) Khi đo, nhớ trang gốc có thể đang CO glue: lúc nội dung tràn sang trang 2
+    thì trang 1 giãn ra lại, nên số đo lề dưới khi đang 2 trang vô nghĩa.
 
 
 ## 3. LỆNH KIỂM TRA (chạy trong thư mục src/)
@@ -55,7 +82,16 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
   # toạ độ từng chữ — dùng để đo lề và tìm dòng mồ côi
   pdftotext -bbox cv.pdf -
 
-  # đếm bullet (phải là 13: 4 CK + 6 DT + 1 Antoree + 1 comment + 1 macro)
+  # lề trên = min(yMin), lề dưới = 792 - max(yMax)  (trang Letter cao 792pt)
+  # BẪY: đừng lấy yMax của chữ có yMin lớn nhất. Ngày nghiêng cỡ nhỏ ở
+  # cuối dòng có yMin lớn hơn chữ đậm cỡ thường nhưng đáy lại cao hơn →
+  # báo lề dưới rộng hơn thực tế ~2pt (đã dính 1 lần ngày 04/10/2026).
+  pdftotext -bbox -f 1 -l 1 cv.pdf - | grep '<word' \
+    | sed -E 's/.*yMin="([0-9.]+)".*yMax="([0-9.]+)".*/\1 \2/' \
+    | awk 'NR==1{t=$1;b=$2} {if($1<t)t=$1; if($2>b)b=$2}
+           END{printf "top=%.1f bottom=%.1f\n", t, 792-b}'
+
+  # đếm bullet (phải là 12: 4 CK + 6 DT + 1 comment + 1 macro)
   grep -c '\resumeItem{' cv.tex
 
   # kiểm các quy ước chính tả đã chốt
@@ -109,9 +145,16 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
   - 51 applications thì ghi "50+ applications" cho tròn.
   - Giữ dấu "..." trong "Node, Pod, PVC, Database, ...".
   - Certificates giữ là section RIÊNG, không gộp vào Education.
-  - Mỗi bullet phải có động từ mở đầu KHÁC NHAU (hiện 11 bullet / 11 động từ).
+  - Mỗi bullet phải có động từ mở đầu KHÁC NHAU (hiện 10 bullet / 10 động từ).
   - Viết "on-premises" (không phải "on-premise").
   - "cron jobs" — chạy bằng crontab trên host, KHÔNG phải CronJob của K8s.
+  - Đã bỏ Antoree (DevOps Intern, Mar–May 2023) khỏi Experience (04/10/2026).
+  - Certificates: KHÔNG bullet, trình bày như Skills (thẳng lề trái), mới
+    nhất lên trên (Azure trước, AWS sau).
+  - Ngày tháng: MỌI mốc đều nghiêng cỡ nhỏ, gạch nối "--" thường (KHÔNG
+    \textbf{--}). Mục 2 hàng (Experience, Education) đặt ngày ở ô #4 của
+    \resumeSubheading (hàng 2, cạnh chức danh/ngành) — ô #2 in đứng cỡ thường
+    nên để trống. Mép phải mọi ngày thẳng hàng tại x = 569.25pt.
 
   Skills (chốt 27/08/2026):
   - Đã bỏ khỏi Skills: VMware, GitHub Actions, DNS, TLS/SSL (không đủ bằng chứng
@@ -121,6 +164,14 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
     Đừng đề xuất lại.
   - Longhorn, Kong: để nguyên ở Skills, KHÔNG cần thêm bằng chứng vào
     Experience. Đừng đề xuất lại.
+
+  Skills (chốt 04/10/2026):
+  - Dòng Cloud chuyển xuống CUỐI Skills: thứ tự dòng = độ dày kinh nghiệm
+    thực tế, Cloud giờ chủ yếu dựa vào chứng chỉ nên đứng chót.
+  - Cloud: "AWS (EC2, S3, ECS, ECR, ELB, Route 53, IAM), Azure". Azure tạm
+    ghi trơn, chưa liệt kê dịch vụ. Nếu sau này thêm thì phải viết tắt
+    (VMs, VNet, Storage, Entra ID[, Monitor]) — viết đầy đủ là tràn 2 dòng
+    và dòng mồ côi. KHÔNG thêm AKS trừ khi đã chạy AKS thật.
 
   Cách làm việc:
   - LUÔN cho Vincent review trước khi ghi vào file.
@@ -134,8 +185,16 @@ Lề trang       : 40.2pt trên / 40.1pt dưới
     dụng thực tế). ATS nào lọc theo 2 từ khoá này sẽ loại. Vincent đã biết
     và chấp nhận.
   - Chưa có section Projects, trong khi CV có link GitHub và Medium.
-  - Chứng chỉ: mới có AWS SAA. Với CV nặng về Kubernetes thì CKA là thứ
+  - Chứng chỉ: AWS SAA (hết hạn 04/2027) + Azure Administrator Associate
+    (cấp 02/10/2026, hết hạn 02/10/2027 — gia hạn miễn phí bằng bài đánh giá
+    online, mở từ ~04/2027). Với CV nặng về Kubernetes thì CKA vẫn là thứ
     thiếu rõ nhất.
+  - Bỏ Antoree kéo theo 2 hệ quả:
+      · (Đã xử lý 04/10/2026) Summary đổi "3.5 years" → "3+ years" vì
+        Experience giờ bắt đầu Jun 2023 (= ~3 năm 4 tháng).
+      · (Đã xử lý 04/10/2026) Skills AWS không còn bullet làm bằng chứng
+        trên CV, nhưng kinh nghiệm Antoree vẫn có thật — bị hỏi thì kể đợt
+        intern 2023. Đã chuyển dòng Cloud xuống cuối Skills.
 
 
 ## 8. CẢNH BÁO BẢO MẬT  (trong các file zip đã đọc — KHÔNG được public)

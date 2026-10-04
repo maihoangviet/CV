@@ -109,13 +109,14 @@
   \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeOrganizationHeading}[4]{
-  \vspace{-2pt}\item
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+\newcommand{\resumeCertificateListStart}{\vspace{-2pt}\item\begin{itemize}[leftmargin=0pt, label={}, itemsep=4pt]}
+\newcommand{\resumeCertificate}[2]{
+  \item
+  \begin{tabular*}{\dimexpr\linewidth-0.03\textwidth+0.15in\relax}[t]{l@{\extracolsep{\fill}}r}
     \textbf{#1} & \textit{\small #2} \\
-    \textit{\small#3}
-  \end{tabular*}\vspace{-7pt}
+  \end{tabular*}\vspace{-2pt}
 }
+\newcommand{\resumeCertificateListEnd}{\end{itemize}\vspace{-5pt}}
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
@@ -123,7 +124,7 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=3pt]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=4pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
@@ -152,7 +153,7 @@
 \vspace{3pt}
 \resumeSubHeadingListStart
     \small{\item{
-      DevOps Engineer with 3.5 years of experience operating on-premises Kubernetes platforms, currently managing 10+ RKE clusters across 60+ VMs with a full observability stack (Prometheus, Grafana, ELK, OpenTelemetry). Experienced in GitOps delivery (ArgoCD, GitLab CI/CD) for 50+ applications, infrastructure automation, and database reliability.
+      DevOps Engineer with 3+ years of experience operating on-premises Kubernetes platforms, currently managing 10+ RKE clusters across 60+ VMs with a full observability stack (Prometheus, Grafana, ELK, OpenTelemetry). Experienced in GitOps delivery (ArgoCD, GitLab CI/CD) for 50+ applications, infrastructure automation, and database reliability.
     }}
 \resumeSubHeadingListEnd
 
@@ -164,12 +165,12 @@
 \vspace{3pt}
 \resumeSubHeadingListStart
     \small{\item{
-        \textbf{Containerization \& Orchestration:} Docker, Kubernetes, RKE, Rancher, Istio, Longhorn, Harbor \\ \vspace{3pt}
-        \textbf{CI/CD, GitOps \& Automation:} GitLab CI/CD, Jenkins, ArgoCD, Helm, Vault, Bash Scripting \\ \vspace{3pt}
-        \textbf{Cloud:} AWS (EC2, S3, ECS, ECR, ELB, Route 53, IAM) \\ \vspace{3pt}
-        \textbf{Observability:} Prometheus, Grafana, Loki, ELK (Elasticsearch, Logstash, Kibana), Filebeat, OpenTelemetry, Jaeger \\ \vspace{3pt}
-        \textbf{Databases:} MySQL (Galera Cluster), PostgreSQL, MongoDB, Redis, Elasticsearch \\ \vspace{3pt}
-        \textbf{Operating Systems \& Networking:} Linux (Ubuntu, RHEL), Nginx, HAProxy, Kong, CloudFlare \\ \vspace{3pt}
+        \textbf{Containerization \& Orchestration:} Docker, Kubernetes, RKE, Rancher, Istio, Longhorn, Harbor \\ \vspace{4pt}
+        \textbf{CI/CD, GitOps \& Automation:} GitLab CI/CD, Jenkins, ArgoCD, Helm, Vault, Bash Scripting \\ \vspace{4pt}
+        \textbf{Observability:} Prometheus, Grafana, Loki, ELK (Elasticsearch, Logstash, Kibana), Filebeat, OpenTelemetry, Jaeger \\ \vspace{4pt}
+        \textbf{Databases:} MySQL (Galera Cluster), PostgreSQL, MongoDB, Redis, Elasticsearch \\ \vspace{4pt}
+        \textbf{Operating Systems \& Networking:} Linux (Ubuntu, RHEL), Nginx, HAProxy, Kong, CloudFlare \\ \vspace{4pt}
+        \textbf{Cloud:} AWS (EC2, S3, ECS, ECR, ELB, Route 53, IAM), Azure \\ \vspace{4pt}
     }}
 \resumeSubHeadingListEnd
 
@@ -205,14 +206,6 @@
     \resumeItem{Implemented monitoring and log analytics with \textbf{Prometheus}, \textbf{Grafana}, and \textbf{Loki} --- \textbf{Telegram} alerts on CPU, memory, and disk, plus log-pattern detection for 5xx and auth failures --- reducing \textbf{MTTD by 40\%}.}
     % \resumeItem{\textbf{Collaborated} with \textbf{developers}, \textbf{QA}, and \textbf{BA teams} to \textbf{design, improve deployment workflows} and \textbf{support system access}, aligning with \textbf{project requirements} and \textbf{DevOps best practices}.}
     \resumeItemListEnd
-
-% ANTOREE EDUDEV LLC
-\resumeSubheading
-    {ANTOREE EDUDEV LLC}{}%
-    {DevOps Engineer Internship}{Mar 2023 -- May 2023}
-\resumeItemListStart
-    \resumeItem{Managed \textbf{AWS} infrastructure (\textbf{ECS}, \textbf{ECR}, \textbf{EC2}, \textbf{S3}, \textbf{ELB}, \textbf{Route 53}) with \textbf{Jenkins} CI/CD across Staging and Production, cutting monthly cloud costs by \textbf{30\% (\$1,000+)} via rightsizing and retention policies.}
-\resumeItemListEnd
 \resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
@@ -223,8 +216,8 @@
 \vspace{3pt}
 \resumeSubHeadingListStart
     \resumeSubheading
-      {Ton Duc Thang University - TDTU}{Sep 2019 \textbf{--} Sep 2023}%
-      {Bachelor of Computer Networks and Data Communication --- \textbf{GPA: 7.96/10.0}}{}
+      {Ton Duc Thang University - TDTU}{}%
+      {Bachelor of Computer Networks and Data Communication --- \textbf{GPA: 7.96/10.0}}{Sep 2019 -- Sep 2023}
 \resumeSubHeadingListEnd
 
 %----------------------------------------------------------------------------------------
@@ -232,9 +225,14 @@
 %----------------------------------------------------------------------------------------
 
 \section{Certificates}
-\resumeSubHeadingListStart    
-    \resumeOrganizationHeading
-      {\href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url}{AWS Certified Solutions Architect - Associate}}{Apr 2024 \textbf{--} Apr 2027}{}{}
+\vspace{3pt}
+\resumeSubHeadingListStart
+  \resumeCertificateListStart
+    \resumeCertificate
+      {\href{https://learn.microsoft.com/api/credentials/share/en-us/maihoangviet/6A167E00FD612689?sharingId=2E5AF5B38CC0ED0F}{Microsoft Certified: Azure Administrator Associate}}{Oct 2026 -- Oct 2027}
+    \resumeCertificate
+      {\href{https://www.credly.com/badges/17055723-5368-43af-9258-7b1df26e8d0b/public_url}{AWS Certified Solutions Architect - Associate}}{Apr 2024 -- Apr 2027}
+  \resumeCertificateListEnd
 \resumeSubHeadingListEnd
 
 \end{document}
