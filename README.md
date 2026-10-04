@@ -12,7 +12,7 @@ LaTeX source for my CV, plus a GitHub Actions workflow that compiles it and publ
 | `.github/workflows/build.yml` | Compile and publish pipeline |
 | `index.html` | Landing page that redirects to the PDF |
 | `CNAME` | Custom domain for GitHub Pages |
-| `note.txt` | Working notes: layout constraints, decisions already made, ideas not used yet |
+| `CLAUDE.md` | Working notes, loaded automatically by Claude Code: layout constraints, decisions already made, ideas not used yet |
 | `Makefile` | Local build shortcut — run it from inside `src/`, not the repo root |
 
 Generated PDFs are gitignored. The published copy lives on the `build` branch, never on `main`.
