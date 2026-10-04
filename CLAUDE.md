@@ -2,6 +2,7 @@
 GHI CHÚ CV  —  cập nhật 04/10/2026
 Nội dung cũ (nhật ký ý tưởng CV tháng 02/2025) đã bị thay thế.
 Xem lại bản cũ:   git show 8306ad8:note.txt
+File này tên là note.txt cho tới 04/10/2026 (commit cũ: git show <sha>:note.txt)
 ================================================================================
 
 
