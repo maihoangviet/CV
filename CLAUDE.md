@@ -150,6 +150,8 @@ Lề trang       : 40.2pt trên / 41.0pt dưới
   - Viết "on-premises" (không phải "on-premise").
   - "cron jobs" — chạy bằng crontab trên host, KHÔNG phải CronJob của K8s.
   - Đã bỏ Antoree (DevOps Intern, Mar–May 2023) khỏi Experience (04/10/2026).
+  - Đã bỏ link GitHub khỏi header (17/10/2026). Header còn: điện thoại |
+    email | LinkedIn | Medium, nằm trên 1 dòng.
   - Certificates: KHÔNG bullet, trình bày như Skills (thẳng lề trái), mới
     nhất lên trên (Azure trước, AWS sau).
   - Ngày tháng: MỌI mốc đều nghiêng cỡ nhỏ, gạch nối "--" thường (KHÔNG
@@ -185,7 +187,8 @@ Lề trang       : 40.2pt trên / 41.0pt dưới
   - Terraform / Ansible KHÔNG còn xuất hiện ở đâu trên CV (chỉ học, chưa áp
     dụng thực tế). ATS nào lọc theo 2 từ khoá này sẽ loại. Vincent đã biết
     và chấp nhận.
-  - Chưa có section Projects, trong khi CV có link GitHub và Medium.
+  - Chưa có section Projects, trong khi CV có link Medium (link GitHub đã
+    bỏ 17/10/2026).
   - Chứng chỉ: AWS SAA (hết hạn 04/2027) + Azure Administrator Associate
     (cấp 02/10/2026, hết hạn 02/10/2027 — gia hạn miễn phí bằng bài đánh giá
     online, mở từ ~04/2027). Với CV nặng về Kubernetes thì CKA vẫn là thứ
